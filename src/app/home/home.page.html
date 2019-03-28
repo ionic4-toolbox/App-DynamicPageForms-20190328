@@ -1,4 +1,4 @@
-<ion-grid style="width: fit-content;">
+<ion-grid style="width: 100%;">
   <form [formGroup]="fatherGroup" (ngSubmit)="submit()">
     <ion-row style="margin-bottom: 50px; width: 100%;" *ngFor="let item of arrays" [attr.aria-describedby]="item.title">
       <ion-row style="width: 100%;">
@@ -7,11 +7,12 @@
       <ion-row style="width: 100%;">
         <form [formGroup]="fatherGroup.get(item.formName)" style="width: 100%;">
           <ion-row *ngFor="let row of item.arrayForm">
-              <ion-col *ngFor="let controler of row" style="margin: 5px 10px;" [class]="controler.class">
+              <ion-col *ngFor="let controler of row" [class]="controler.class" [size]="controler.colSize">
                 <label [attr.for]="controler.id">{{ controler.label }}</label>
                 <br />
                 <input 
                   formControlName="{{ controler.controlName }}"
+                  style="width: 90%;"
                   [attr.id]="controler.id"
                   [placeholder]="controler.placeholder ? controler.placeholder : ''"
                   (keyup)="controler.keyup ? controler.keyup() : null;"

@@ -11,10 +11,8 @@ type FormControlStyle = {
   id: number,
   controlName: string,
   placeholder?: string,
-  col?: string,
+  colSize?: number,
   label: string,
-  class: string,
-  break: boolean,
   disable: boolean,
   keyup?: (...args: any) => void,
   focus?: (...args: any) => void,
@@ -37,26 +35,27 @@ export class HomePage implements OnInit {
 
   public id: number = -1;
 
+  // colSize: O tamanho da coluna, Vai de 1 à 12 feito no grid do bootstrap
   public arrayForm1: Array<FormControlStyle[]> = [
     [
-      { id: this.sumId(), controlName: 'cpf', label: 'cpf', placeholder: '000.000.000-00', class: 'one', col: 'col-2', break: false,
+      { id: this.sumId(), controlName: 'cpf', label: 'cpf', placeholder: '000.000.000-00', colSize: 6,
         keyup: () => this.func1(), disable: true },
-      { id: this.sumId(), controlName: 'name', label: 'nome', class: 'two', break: true,
+      { id: this.sumId(), controlName: 'name', label: 'nome', colSize: 6,
         focus: () => this.func1(), disable: true },
     ],
     [
-      { id: this.sumId(), controlName: 'nickname', label: 'sobrenome', class: 'two', break: false,
+      { id: this.sumId(), controlName: 'nickname', label: 'sobrenome', colSize: 2,
         focusout: () => this.func1(), disable: true }
     ]
   ];
   public arrayForm2: Array<FormControlStyle[]> = [
     [
-      { id: this.sumId(), controlName: 'cnpj', label: 'cnpj', placeholder: '00.000.000/0000-00',
-        class: 'three', break: true, disable: true },
-      { id: this.sumId(), controlName: 'name', label: 'nome', class: 'three', break: false, disable: true },
+      { id: this.sumId(), controlName: 'cnpj', label: 'cnpj', placeholder: '00.000.000/0000-00', colSize: 8,
+        disable: true },
+      { id: this.sumId(), controlName: 'name', label: 'nome', disable: true },
     ], [
-      { id: this.sumId(), controlName: 'nickname', label: 'sobrenome', class: 'three', break: false, disable: true },
-      { id: this.sumId(), controlName: 'field', label: 'campo', class: 'one', break: false, disable: true },
+      { id: this.sumId(), controlName: 'nickname', label: 'sobrenome', disable: true },
+      { id: this.sumId(), controlName: 'field', label: 'campo', disable: true },
     ]
   ];
 
